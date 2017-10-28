@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, rustPlatform }:
+{ stdenv, fetchFromGitHub, rustPlatform, dash, bash }:
 
 rustPlatform.buildRustPackage rec {
   name = "just-${version}";
@@ -8,11 +8,14 @@ rustPlatform.buildRustPackage rec {
     owner = "casey";
     repo = "just";
     #rev = "v${version}";
-    sha256 = "0siq7dffrs0263557xnxlslbfpvam5wivf05ik9wafbkpxig6n2s";
-    rev = "3d06566e64ea3a8ee8758f363d31c61090567546";
+    sha256 = "1jqlfxc91vj31br18lnj21srd0k6hh5grjsn97r94jl5x06mfcwz";
+    rev = "87d02682bc2e485a8ed8553b4a0e5d1c2179cf9b";
   };
 
-  depsSha256 = "0ajmhcyv35m0pikyp9181pm5im2gir4l06nhhrfbk0carl5nx9fa";
+  depsSha256 = "0ibzk7wn50x935fxcryxj296szi04d47lk38wrq5k487nvsbcnn8";
+
+  buildInputs = [ dash bash ];
+  nativeBuildInputs = [ dash bash ];
 
   meta = with stdenv.lib; {
     description = "just is a handy way to save and run commands";
